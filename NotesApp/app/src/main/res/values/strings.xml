@@ -2,4 +2,6 @@
     <string name="app_name">NotesApp</string>
     <string name="pen_icon">Pen Icon</string>
     <string name="write_it_down">Write it down</string>
+    <string name="delete">Delete</string>
+    <string name="pin_to_home">Pin to Home</string>
 </resources>

@@ -9,15 +9,21 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface NoteDao {
 
-    @Query("SELECT * FROM note")
-    fun getALlNotes(): Flow<List<Note>>
+    @Query("SELECT * FROM note_table")
+    suspend fun getALlNotes(): Flow<List<Note>>
 
-    @Query("SELECT * FROM note WHERE noteId = :noteId")
-    fun getNote(noteId: Long): Flow<Note>
+    @Query("SELECT * FROM note_table WHERE note_id = :noteId")
+    suspend fun getNote(noteId: Long): Flow<Note>
 
     @Insert
-    fun addNote(note: Note)
+    suspend fun addNote(note: Note)
+
+    @Query("DELETE FROM note_table")
+    suspend fun clear()
+
+    @Query("SELECT * FROM note_table ORDER BY note_id DESC LIMIT 1")
+    suspend fun getCurrentNote(): Note?
 
     @Delete
-    fun deleteNote(note: Note)
+    suspend fun deleteNote(note: Note)
 }

@@ -37,10 +37,10 @@ fun NotesScreen(navController: NavController) {
         containerColor = MaterialTheme.colorScheme.background
     ) { paddingVal ->
         Column(modifier = Modifier.padding(paddingVal)) {
-            AppTitle()
+            AppTitle(56, 20)
             Spacer(modifier = Modifier.height(20.dp))
             NoteItem(
-                note = Note(1, "Title", "Hey this is my new note", 12),
+                note = Note(1, "Title", "Hey this is my new note"),
                 modifier = Modifier.clickable {
                     navController.navigate(EDIT_NOTE_SCREEN_ROUTE)
                 }

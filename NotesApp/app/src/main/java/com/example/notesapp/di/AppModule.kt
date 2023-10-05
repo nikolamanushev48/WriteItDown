@@ -2,8 +2,8 @@ package com.example.notesapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.notesapp.data.AppDatabase
 import com.example.notesapp.data.NoteDao
+import com.example.notesapp.data.NotesDatabase
 import com.example.notesapp.domain.NoteRepository
 import dagger.Module
 import dagger.Provides
@@ -20,8 +20,8 @@ object AppModule {
     @Singleton
     fun provideNoteDatabase(app: Application) = Room.databaseBuilder(
         app,
-        AppDatabase::class.java,
-        AppDatabase.DB_NAME
+        NotesDatabase::class.java,
+        NotesDatabase.DB_NAME
     ).build()
 
     @Provides

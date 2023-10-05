@@ -18,11 +18,14 @@ import androidx.compose.ui.unit.sp
 import com.example.notesapp.R
 
 @Composable
-fun AppTitle() {
+fun AppTitle(
+    textSize: Int,
+    paddingStart: Int
+) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
-        modifier = Modifier.padding(start = 20.dp)
+        modifier = Modifier.padding(start = paddingStart.dp)
     ) {
         Icon(
             painter = painterResource(id = R.drawable.pen_icon),
@@ -35,7 +38,7 @@ fun AppTitle() {
         Text(
             stringResource(R.string.write_it_down),
             textAlign = TextAlign.Center,
-            fontSize = 56.sp,
+            fontSize = textSize.sp,
             fontFamily = FontFamily.Cursive,
             color = MaterialTheme.colorScheme.primary
         )

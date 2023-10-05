@@ -1,11 +1,15 @@
 package com.example.notesapp.ui.editnote
 
+import androidx.compose.foundation.border
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -13,7 +17,6 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
@@ -23,22 +26,35 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.notesapp.data.Note
 import com.example.notesapp.ui.components.OptionMenu
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EditNoteScreen(
-    //viewModel: EditNoteViewModel = hiltViewModel(),
-    title: String
+    viewModel: EditNoteViewModel = hiltViewModel(),
+    navController: NavController,
+    noteId: Long
 ) {
+    var noteTitle by remember { mutableStateOf("") }
+    var noteContent by remember { mutableStateOf("") }
+    val scrollState = rememberScrollState()
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-
+                    viewModel.addNote(
+                        Note(
+                            title = noteTitle,
+                            content = noteContent
+                        )
+                    )
                 },
                 containerColor = MaterialTheme.colorScheme.background
             ) {
@@ -48,30 +64,41 @@ fun EditNoteScreen(
                 )
             }
         },
-        topBar = { OptionMenu() }
+        topBar = { OptionMenu(navController = navController) }
     ) { paddingVal ->
-        var noteContent by remember { mutableStateOf("") }
-
         Column(
             Modifier.padding(paddingVal),
             verticalArrangement = Arrangement.Center,
-            horizontalAlignment = Alignment.CenterHorizontally
+            horizontalAlignment = Alignment.Start
         ) {
-            Text(
-                text = title,
-                fontSize = 30.sp,
-                maxLines = 1
+            TextField(
+                value = noteTitle,
+                onValueChange = { noteTitle = it },
+                modifier = Modifier
+                    .padding(start = 20.dp)
+                    .wrapContentSize(),
+                colors = TextFieldDefaults.textFieldColors(
+                    containerColor = Color.Transparent,
+                    textColor = MaterialTheme.colorScheme.primary
+                ),
             )
+
             TextField(
                 value = noteContent,
                 onValueChange = { noteContent = it },
                 modifier = Modifier
-                    .fillMaxWidth(0.9f)
-                    .fillMaxHeight(0.6f),
+                    .padding(start = 10.dp, end = 10.dp)
+                    .fillMaxWidth()
+                    .fillMaxHeight(0.9f)
+                    .border(1.dp, Color.White)
+                    .horizontalScroll(
+                        scrollState,
+                        reverseScrolling = true
+                    ),
                 colors = TextFieldDefaults.textFieldColors(
-                    containerColor = MaterialTheme.colorScheme.secondary,
+                    containerColor = Color.Transparent,
                     textColor = MaterialTheme.colorScheme.primary
-                )
+                ),
             )
         }
     }

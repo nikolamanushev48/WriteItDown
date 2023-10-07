@@ -19,15 +19,12 @@ class EditNoteViewModel @Inject constructor(
         get() = _uiData
     private val _uiData = MutableLiveData(EditNoteUIModel())
 
-    fun addNote(note: Note) {
-        viewModelScope.launch {
-            noteRepository.addNote(note)
-        }
-    }
+    suspend fun getNoteById(noteId: Long) = noteRepository.getNote(noteId)
 
-    fun getAllNotes() {
+
+    fun updateNote(newNote: Note) {
         viewModelScope.launch {
-            noteRepository.getAllNotes()
+            noteRepository.updateNote(newNote)
         }
     }
 }

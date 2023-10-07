@@ -6,18 +6,18 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.notesapp.ui.NotesScreen
 import com.example.notesapp.ui.editnote.EditNoteScreen
+import com.example.notesapp.ui.home.HomeScreen
 
 @Composable
 fun Navigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Screen.NotesScreen.route) {
-        composable(route = Screen.NotesScreen.route) {
-            NotesScreen(navController = navController)
+    NavHost(navController = navController, startDestination = Screen.HomeScreen.route) {
+        composable(route = Screen.HomeScreen.route) {
+            HomeScreen(navController = navController)
         }
         composable(
-            route = Screen.EditNoteScreen.route,
+            route = Screen.EditNoteScreen.route + "?noteId={noteId}",
             arguments = listOf(
                 navArgument(
                     name = "noteId"
@@ -29,7 +29,7 @@ fun Navigation() {
         ) {
             EditNoteScreen(
                 navController = navController,
-                noteId = it.arguments?.getLong("noteId") ?: -1L
+                noteId = 2L//it.arguments?.getLong("noteId") ?: -1L
             )
         }
     }

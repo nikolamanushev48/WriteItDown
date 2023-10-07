@@ -5,7 +5,7 @@ import com.example.notesapp.utils.NOTES_SCREEN_ROUTE
 
 sealed class Screen(val route: String) {
     object EditNoteScreen: Screen(EDIT_NOTE_SCREEN_ROUTE)
-    object NotesScreen: Screen(NOTES_SCREEN_ROUTE)
+    object HomeScreen: Screen(NOTES_SCREEN_ROUTE)
 
     fun withArgs(vararg args: String) = buildString {
         append(route)

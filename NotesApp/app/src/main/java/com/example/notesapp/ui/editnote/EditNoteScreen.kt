@@ -20,6 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,21 +41,32 @@ fun EditNoteScreen(
     navController: NavController,
     noteId: Long
 ) {
+    val scrollState = rememberScrollState()
+    var currentNote by remember { mutableStateOf(Note()) }
+
+    LaunchedEffect(Unit){
+        currentNote = viewModel.getNoteById(noteId)
+    }
+
     var noteTitle by remember { mutableStateOf("") }
     var noteContent by remember { mutableStateOf("") }
-    val scrollState = rememberScrollState()
+    noteTitle = currentNote.title
+    noteContent = currentNote.content
+
     Scaffold(
         modifier = Modifier.fillMaxSize(),
         containerColor = MaterialTheme.colorScheme.background,
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    viewModel.addNote(
+                    viewModel.updateNote(
                         Note(
+                            id = noteId,
                             title = noteTitle,
                             content = noteContent
                         )
                     )
+                    navController.popBackStack()
                 },
                 containerColor = MaterialTheme.colorScheme.background
             ) {

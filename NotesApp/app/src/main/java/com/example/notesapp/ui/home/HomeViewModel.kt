@@ -13,11 +13,13 @@ class HomeViewModel @Inject constructor(
     private val noteRepository: NoteRepository,
 ) : ViewModel() {
 
-    fun addNote(note: Note) {
+    suspend fun addNote(note: Note) = noteRepository.addNote(note)
+
+    fun getAllNotes() = noteRepository.getAllNotes()
+
+    fun deleteNote(note: Note) {
         viewModelScope.launch {
-            noteRepository.addNote(note)
+            noteRepository.deleteNote(note)
         }
     }
-
-    suspend fun getAllNotes() = noteRepository.getAllNotes()
 }

@@ -19,7 +19,7 @@ class EditNoteViewModel @Inject constructor(
         get() = _uiData
     private val _uiData = MutableLiveData(EditNoteUIModel())
 
-    suspend fun getNoteById(noteId: Long) = noteRepository.getNote(noteId)
+    suspend fun getNoteById(noteId: Long): Note? = noteRepository.getNote(noteId)
 
 
     fun updateNote(newNote: Note) {

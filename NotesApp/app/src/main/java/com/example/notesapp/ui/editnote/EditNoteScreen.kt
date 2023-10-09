@@ -28,9 +28,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.notesapp.data.Note
 import com.example.notesapp.ui.components.OptionMenu
 
@@ -38,20 +40,20 @@ import com.example.notesapp.ui.components.OptionMenu
 @Composable
 fun EditNoteScreen(
     viewModel: EditNoteViewModel = hiltViewModel(),
-    navController: NavController,
+    navController: NavHostController,
     noteId: Long
 ) {
     val scrollState = rememberScrollState()
-    var currentNote by remember { mutableStateOf(Note()) }
-
-    LaunchedEffect(Unit){
-        currentNote = viewModel.getNoteById(noteId)
-    }
-
     var noteTitle by remember { mutableStateOf("") }
     var noteContent by remember { mutableStateOf("") }
-    noteTitle = currentNote.title
-    noteContent = currentNote.content
+
+    LaunchedEffect(Unit) {
+        viewModel.getNoteById(noteId)?.let { note ->
+            println("EDIT:" + note)
+            noteTitle = note.title
+            noteContent = note.content
+        }
+    }
 
     Scaffold(
         modifier = Modifier.fillMaxSize(),
@@ -91,8 +93,16 @@ fun EditNoteScreen(
                     .wrapContentSize(),
                 colors = TextFieldDefaults.textFieldColors(
                     containerColor = Color.Transparent,
-                    textColor = MaterialTheme.colorScheme.primary
+                    textColor = MaterialTheme.colorScheme.primary,
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
+                    cursorColor = MaterialTheme.colorScheme.primary,
+                    disabledPlaceholderColor = Color.Transparent,
+                    placeholderColor = Color.Transparent
                 ),
+                maxLines = 1,
+                textStyle = TextStyle(fontSize = 30.sp)
             )
 
             TextField(

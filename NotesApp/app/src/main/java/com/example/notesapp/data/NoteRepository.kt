@@ -1,9 +1,11 @@
 package com.example.notesapp.data
 
+import kotlinx.coroutines.flow.Flow
+
 interface NoteRepository {
-     suspend fun getAllNotes(): List<Note>?
-     suspend fun getNote(noteId: Long): Note
-     suspend fun addNote(note: Note)
+     fun getAllNotes(): Flow<List<Note>>?
+     suspend fun getNote(noteId: Long): Note?
+     suspend fun addNote(note: Note): Long
      suspend fun clear()
 
      suspend fun updateNote(newNote: Note)

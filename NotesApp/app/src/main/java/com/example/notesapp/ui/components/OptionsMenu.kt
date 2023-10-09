@@ -26,12 +26,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.example.notesapp.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OptionMenu(navController: NavController) {
+fun OptionMenu(navController: NavHostController) {
 
     var showMenu by remember { mutableStateOf(false) }
     var favouriteNote by remember { mutableStateOf(false) }

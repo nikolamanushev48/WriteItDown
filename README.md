@@ -1,4 +1,4 @@
-# Simple Notes Application
+# Write It Down
 
 This is a simple notes application that allows you to create, view, update, pin and delete notes. It's designed to help you easily write down to-do lists, important information and organize your thoughts.
 

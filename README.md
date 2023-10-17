@@ -1,6 +1,6 @@
 # Simple Notes Application
 
-This is a simple notes application that allows you to create, view, update, and delete notes. It's designed to help you easily jot down and organize your thoughts, to-do lists, and important information.
+This is a simple notes application that allows you to create, view, update, pin and delete notes. It's designed to help you easily write down to-do lists, important information and organize your thoughts.
 
 ## Table of Contents
 - [Features](#features)
@@ -25,23 +25,20 @@ You can check out the application functionalities [here](https://youtu.be/0dBZCL
 
 ## Getting Started
 
-To run this application on your local machine, follow these steps:
+To run this application on your local machine and make changes by yourself, follow these steps:
 
 1. Clone this repository to your local machine:
    ```bash
-   git clone https://github.com/your-username/notes-app.git
+   git clone https://github.com/nikolamanushev48/WriteItDown.git
 2. Change into the project directory:
    ```bash
-   Copy code
-   cd notes-app
-3. Install the required dependencies using npm:
-   ```bash
-   Copy code
-   npm install
-4. Start the application:
-   ```bash
-   Copy code
-   npm start
+   cd WriteItDown
+3. Open Your Android Studio Project:
+      - Launch Android Studio.
+      - Open your Android Studio project by going to File > Open and selecting your project directory.
+4. Build and Run Your Android Application:
+      - Build and run your Android application by clicking the "Run" button in Android Studio or by using the "Shift+F10" keyboard shortcut.
+      - Android Studio will automatically handle the installation of required dependencies and start the application on either an emulator or a connected Android device.
 
 ## Usage
 
@@ -57,17 +54,15 @@ I welcome contributions from the community. If you'd like to contribute to the p
 1. Fork the repository.
 2. Create a new branch for your feature or bug fix:
    ```bash
-   Copy code
    git checkout -b feature/my-feature
 3. Make your changes and commit them:
    ```bash
-   Copy code
    git commit -m "Add my feature"
 4. Push your changes to your forked repository:
    ```zbash
-   Copy code
    git push origin feature/my-feature
 5. Create a pull request to the main repository.
+   
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.

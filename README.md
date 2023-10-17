@@ -29,19 +29,22 @@ To run this application on your local machine, follow these steps:
 1. Clone this repository to your local machine:
    ```bash
    git clone https://github.com/your-username/notes-app.git
-Change into the project directory:
-bash
+2. Change into the project directory:
+   ```bash
+
 Copy code
 cd notes-app
-Install the required dependencies using npm:
-bash
+3. Install the required dependencies using npm:
+   bash
+
 Copy code
 npm install
-Start the application:
-bash
+4. Start the application:
+   bash
+
 Copy code
 npm start
-The application will be running at http://localhost:3000 by default. You can access it in your web browser.
+5. The application will be running at http://localhost:3000 by default. You can access it in your web browser.
 
 Usage
 

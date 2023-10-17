@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -28,6 +29,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -74,7 +77,7 @@ fun EditNoteScreen(
                     }
                     navController.popBackStack()
                 },
-                containerColor = MaterialTheme.colorScheme.background
+                contentColor = MaterialTheme.colorScheme.secondary
             ) {
                 Icon(
                     Icons.Default.Check, contentDescription = "Check",
@@ -133,6 +136,10 @@ fun EditNoteScreen(
                     containerColor = Color.Transparent,
                     textColor = MaterialTheme.colorScheme.primary
                 ),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Done,
+                    keyboardType = KeyboardType.Text
+                )
             )
         }
     }

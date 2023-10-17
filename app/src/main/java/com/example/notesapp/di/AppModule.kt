@@ -20,7 +20,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideNoteDatabase( application: Application) : NotesDatabase = Room.databaseBuilder(
+    fun provideNoteDatabase(application: Application): NotesDatabase = Room.databaseBuilder(
         application.applicationContext,
         NotesDatabase::class.java,
         NotesDatabase.DB_NAME

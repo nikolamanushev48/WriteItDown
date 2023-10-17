@@ -96,9 +96,7 @@ fun HomeScreen(
         ) {
             AppTitle(56, 20)
             Spacer(modifier = Modifier.height(20.dp))
-            notes.value.forEach {
-                println("Notes: " + it + '\n')
-            }
+
             LazyVerticalGrid(
                 columns = GridCells.Fixed(2),
                 modifier = Modifier
@@ -108,13 +106,17 @@ fun HomeScreen(
                 userScrollEnabled = true
             ) {
                 items(notes.value) { note ->
+                    val noteState = remember { mutableStateOf(note) }
                     NoteItem(
                         viewModel = viewModel,
                         coroutineScope = coroutineScope,
-                        note = note,
+                        note = noteState.value,
                         isDeletable = isDeletable,
                         isDeleted = { deletedNote ->
                             notes.value = notes.value.filterNot { it == deletedNote }
+                        },
+                        isUnpinned = { unpinnedNote ->
+                            noteState.value = unpinnedNote
                         },
                         modifier = Modifier
                             .combinedClickable(

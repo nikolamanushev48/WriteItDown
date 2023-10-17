@@ -18,7 +18,7 @@ interface NoteDao {
     suspend fun getNote(noteId: Long): Note?
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addNote(note: Note) : Long
+    suspend fun addNote(note: Note): Long
 
     @Query("DELETE FROM note_table")
     suspend fun clear()

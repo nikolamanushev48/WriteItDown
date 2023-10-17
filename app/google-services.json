@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "793841418627",
+    "project_id": "writeitdown-3cfbc",
+    "storage_bucket": "writeitdown-3cfbc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793841418627:android:c5a6097ba55f76659e36b6",
+        "android_client_info": {
+          "package_name": "com.example.notesapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793841418627-c3ste0i9sne1bpt1r3kn1ofvteimlc37.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.notespp",
+            "certificate_hash": "4ad5d79f8b2f9feabffeba73ec1044a363ec785e"
+          }
+        },
+        {
+          "client_id": "793841418627-47skgtq95a2dt6r9cvg2jtcanf3rkbji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAuXIyqMeuAe_8LV_K13VZmf8MzOQBwaWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793841418627-47skgtq95a2dt6r9cvg2jtcanf3rkbji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
